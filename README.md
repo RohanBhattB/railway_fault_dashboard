@@ -1,152 +1,96 @@
-🚆 Railway Track Health Monitoring Dashboard using Machine Learning
-📌 Overview
+# 🚆 Railway Track Health Monitoring System  
+### An ML-Driven Fault Detection & Maintenance Dashboard
 
-This project is a Machine Learning–based Railway Track Health Monitoring System that analyzes vibration sensor data to detect faults in railway tracks and presents the results through an interactive web dashboard.
+---
 
-The system classifies vibration signals using a Random Forest model, maps detected faults into operational severity levels, and provides real-time visual insights and emergency alerts to support railway maintenance decision-making.
+## 🔍 Problem Statement
+Railway track faults such as **misalignment, bearing defects, and unbalance** are difficult to detect at early stages and can lead to serious safety risks if ignored.  
+Conventional inspection methods are largely manual, time-consuming, and reactive.
 
-🎯 Objectives
+This project proposes a **machine-learning-based monitoring system** that analyzes vibration sensor data to detect fault patterns and present **actionable safety insights** through an interactive dashboard.
 
-Detect railway track faults using vibration sensor data
+---
 
-Classify faults using a supervised ML model
+## 💡 Project Overview
+The system uses vibration feature data collected from railway tracks to:
 
-Convert technical fault outputs into actionable safety conditions
+1. Train a **Random Forest classifier** for fault detection  
+2. Classify vibration patterns into fault categories  
+3. Map fault categories into **railway safety conditions**  
+4. Display results using an interactive **Streamlit dashboard**  
+5. Support maintenance decision-making through alerts and tracking  
 
-Visualize track health using an interactive dashboard
+The focus of this project is **decision support**, not just prediction.
 
-Highlight emergency conditions and maintenance actions
+---
 
-🧠 Machine Learning Approach
+## 🧠 Machine Learning Approach
+- **Algorithm Used:** Random Forest Classifier  
+- **Reason for Selection:**  
+  - Handles noisy sensor data effectively  
+  - Performs well for multi-class classification  
+  - Robust and interpretable for engineering problems  
 
-Algorithm Used: Random Forest Classifier
+### Fault to Condition Mapping
+| ML Output Label | Track Condition | Meaning |
+|----------------|----------------|---------|
+| `normal_like` | 🟢 Good | Track operating normally |
+| `misalignment_like` | 🟡 OK | Minor issue, monitoring required |
+| `bearing_like` | 🔴 Dangerous | High risk, immediate action |
+| `unbalance_like` | 🔴 Dangerous | Unsafe operating condition |
 
-Why Random Forest?
+This mapping converts technical ML output into **real-world operational severity**.
 
-Handles non-linear data well
+---
 
-Robust to noise
+## 📊 Dashboard Features
+The web dashboard provides:
 
-Suitable for multi-class fault classification
+- **Health Overview**
+  - Pie chart showing percentage of track conditions  
+  - Bar chart showing count of Good / OK / Dangerous segments  
 
-Fault Labels → Safety Conditions
-Predicted Fault Label	Track Condition	Severity
-normal_like	🟢 Good	Safe
-misalignment_like	🟡 OK	Needs monitoring
-bearing_like	🔴 Dangerous	Immediate action
-unbalance_like	🔴 Dangerous	Immediate action
-📊 Dashboard Features
+- **Emergency Alert Panel**
+  - Displays unresolved dangerous track segments  
+  - Sorted by severity and time  
+  - Clickable alerts for detailed inspection  
 
-📈 Pie Chart – Distribution of track conditions
+- **Maintenance Workflow**
+  - Mark maintenance as completed  
+  - Automatically removes resolved alerts  
+  - Session-based state management  
 
-📊 Bar Chart – Count of Good / OK / Dangerous tracks
+- **Reporting**
+  - Download active emergency alerts as a CSV file  
 
-🚨 Emergency Alerts Panel
+---
 
-Sorted by severity and time
+## 🛠️ Technology Stack
+- **Language:** Python  
+- **Machine Learning:** scikit-learn  
+- **Data Processing:** pandas, numpy  
+- **Visualization:** Plotly  
+- **Dashboard Framework:** Streamlit  
+- **Deployment:** Streamlit Community Cloud  
 
-Clickable alerts for detailed inspection
+---
 
-✅ Maintenance Completion Tracking
-
-Mark emergencies as resolved
-
-Automatically removes resolved alerts
-
-⬇️ Download Emergency Alerts
-
-Export unresolved emergencies as CSV
-
-📋 Detailed Data Table
-
-Full prediction and analysis view
-
-🛠️ Tech Stack
-
-Programming Language: Python
-
-Machine Learning: scikit-learn
-
-Data Handling: pandas, numpy
-
-Visualization: Plotly
-
-Web Framework: Streamlit
-
-Deployment: Streamlit Community Cloud
-
-📁 Project Structure
+## 📁 Project Structure
 railway_fault_dashboard/
 │
-├── app.py        # Streamlit dashboard
-├── model.py      # ML model and prediction logic
+├── app.py # Streamlit dashboard
+├── model.py # ML training and prediction logic
 ├── vibration_fault_classification_random_forest.csv
 ├── requirements.txt
 └── README.md
 
-▶️ How to Run Locally
-1️⃣ Clone the repository
-git clone https://github.com/your-username/railway-track-health-dashboard.git
-cd railway-track-health-dashboard
 
-2️⃣ Install dependencies
+
+---
+
+## ▶️ How to Run the Project Locally
+```bash
 pip install -r requirements.txt
-
-3️⃣ Run the application
 streamlit run app.py
 
-
-The app will open in your browser at:
-
 http://localhost:8501
-
-🌐 Live Deployment
-
-The project is deployed for free on Streamlit Community Cloud.
-
-🔗 Live Demo:
-https://your-app-name.streamlit.app
-
-🧪 Dataset
-
-The dataset contains extracted vibration features from railway track sensors
-
-Includes statistical and correlation-based features
-
-Labels represent different mechanical fault patterns
-
-🧠 Key Learning Outcomes
-
-Applied machine learning to a real-world safety problem
-
-Built an end-to-end ML pipeline (data → model → UI)
-
-Learned Streamlit for rapid ML dashboard development
-
-Implemented session-based state management
-
-Understood fault severity mapping and decision systems
-
-🚀 Future Scope
-
-Integration with real-time IoT vibration sensors
-
-Persistent storage for maintenance history (database)
-
-SMS / Email alerts for critical conditions
-
-GIS-based railway track visualization
-
-Role-based login for operators and admins
-
-👨‍🎓 Academic Use
-
-This project is suitable for:
-
-Final year engineering projects
-
-Machine Learning mini-projects
-
-Data Science & AI demonstrations
-
-Smart transportation system studies
